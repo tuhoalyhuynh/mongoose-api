@@ -41,16 +41,17 @@ app.post('/', (req, res) => {
 })
 
 app.put('/:class', (req, res) => {
-    Guardian.update({ class: req.params.class }, req.body).then((guardian) => {
+    Guardian.update({ class: req.params.class }, { $set: {armor: req.body} }).then((guardian) => {
         res.status(201).json({ guardian })
     })
     .catch((err) => res.send(err))
 })
 
 app.delete('/:class', (req, res) => {
-    Guardian.deleteOne({ class: req.params.class}).then(() => {
+    Guardian.deleteOne({ class: req.params.class }).then(() => {
         res.status(201).json()
     })
+    .catch((err) => res.send(err))
 })
 
 const PORT = process.env.PORT || 3000;

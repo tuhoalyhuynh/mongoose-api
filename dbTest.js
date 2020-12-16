@@ -19,7 +19,7 @@ mongoose.connect(`${process.env.MONGO_URI}`, {
 // const guardian2 = new Guardian({ class: 'Warlock', subclass: 'Shadebinder' })
 // guardian2.save()
 
-Guardian.update({ class: 'Hunter' }, {
+Guardian.update({ class: 'Hunter' }, { $set: {
     weapons: {
         primary: 'Suros Regime',
         energy: `Felwinter's Lie`,
@@ -33,4 +33,4 @@ Guardian.update({ class: 'Hunter' }, {
         classItem: `Legacy's Oath Cloak`
     }
     }
-)
+})
